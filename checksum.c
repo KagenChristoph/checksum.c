@@ -37,12 +37,14 @@ int main (int argc, char * argv[], char ** envp) {
 			checksum = buf[i];
 			buf[i] = 0;
 		}
-		sum += buf[i];
-	 if (sum > max_int)
+	  
+	  
+	 int value = buf[i];
+	 if (sum+value > max_int)
 	  {
 		  sum = sum-(max_int+1)+1;
 	  }
-
+        sum += value;
     }
 	complement = max_int - sum;
 
