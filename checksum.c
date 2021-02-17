@@ -28,6 +28,7 @@ int main (int argc, char * argv[], char ** envp) {
   size_t nbyte;
   nbyte = sizeof(buf);
   int retval;
+  int tmp = 0;
   int checkPass = 5;
 
   /* the following is the prototype for the read system call */
@@ -40,12 +41,16 @@ int main (int argc, char * argv[], char ** envp) {
 			checksum = value;
 			value = 0;
 		}
-		sum += value;
+		sum = value + tmp;
+	  if (sum > max_int)
+	  {
+		  tmp = 0;
+		  sum = 255 - sum;
+		  tmp++;
+	  }
     }
-  quotient   = sum / (max_int + 1);
-	remainder  = sum % (max_int + 1 );
-	sum = quotient + remainder;
-	complement = max_int - sum;
+	compliment = 255 - sum;
+
   fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
   if (checksum != complement ) {
     fprintf(stderr, "Error Detected!\n"); 
