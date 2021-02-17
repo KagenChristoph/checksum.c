@@ -43,7 +43,7 @@ int main (int argc, char * argv[], char ** envp) {
 		sum = sum +value;
 	 if (sum > max_int)
 	  {
-		  sum = sum-256;
+		  sum = sum-256+1;
 	  }
 
     }
