@@ -28,7 +28,6 @@ int main (int argc, char * argv[], char ** envp) {
   size_t nbyte;
   nbyte = sizeof(buf);
   int retval;
-  int tmp = 0;
   int checkPass = 5;
 
   /* the following is the prototype for the read system call */
@@ -36,18 +35,17 @@ int main (int argc, char * argv[], char ** envp) {
   for(int i = 0; i < 10; i++)
     {
         int value = buf[i];
-	  	  if (sum > max_int)
-	  {
-		  tmp = 0;
-		  sum = sum-256;
-		  tmp++;
-	  }
     if(i == checkPass)
 		{
 			checksum = value;
 			value = 0;
 		}
-		sum = sum+value + tmp;
+		sum = sum +value;
+	 if (sum > max_int)
+	  {
+		  sum = sum-256;
+		  sum+=1;
+	  }
 
     }
 	complement = 256 - sum;
