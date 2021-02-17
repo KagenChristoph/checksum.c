@@ -45,7 +45,7 @@ int main (int argc, char * argv[], char ** envp) {
 	  if (sum > max_int)
 	  {
 		  tmp = 0;
-		  sum = 255 - sum;
+		  sum = sum-255;
 		  tmp++;
 	  }
     }
