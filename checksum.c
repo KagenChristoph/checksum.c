@@ -47,7 +47,7 @@ int main (int argc, char * argv[], char ** envp) {
 			checksum = value;
 			value = 0;
 		}
-		sum = value + tmp;
+		sum = sum+value + tmp;
 
     }
 	complement = 256 - sum;
