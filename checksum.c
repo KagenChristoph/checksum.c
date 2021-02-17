@@ -30,7 +30,7 @@ int main (int argc, char * argv[], char ** envp) {
 
   /* the following is the prototype for the read system call */
   retval = read(fd,  (void *) &buf,nbyte);  
-  for(int i = 0; i < 10; i++)
+  for(int i = 0; i < count; i++)
     {
     if(i == checkPass)
 		{
