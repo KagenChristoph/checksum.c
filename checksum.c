@@ -36,20 +36,21 @@ int main (int argc, char * argv[], char ** envp) {
   for(int i = 0; i < 10; i++)
     {
         int value = buf[i];
+	  	  if (sum > max_int)
+	  {
+		  tmp = 0;
+		  sum = sum-256;
+		  tmp++;
+	  }
     if(i == checkPass)
 		{
 			checksum = value;
 			value = 0;
 		}
 		sum = value + tmp;
-	  if (sum > max_int)
-	  {
-		  tmp = 0;
-		  sum = sum-255;
-		  tmp++;
-	  }
+
     }
-	complement = 255 - sum;
+	complement = 256 - sum;
 
   fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
   if (checksum != complement ) {
