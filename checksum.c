@@ -19,13 +19,11 @@ int main (int argc, char * argv[], char ** envp) {
 
   int count = 10;
   int sum = 0;   
-  int checksum;        
-  int quotient;             
-  int remainder;            
-  int complement;   
-  byte buf[10];
+  byte checksum;                               
+  byte complement;   
+  byte buf[count];
   int fd;
-  size_t nbyte;
+  size_t nbyte; //n bytes to read
   nbyte = sizeof(buf);
   int retval;
   int checkPass = 5;
@@ -34,20 +32,19 @@ int main (int argc, char * argv[], char ** envp) {
   retval = read(fd,  (void *) &buf,nbyte);  
   for(int i = 0; i < 10; i++)
     {
-        int value = buf[i];
     if(i == checkPass)
 		{
-			checksum = value;
-			value = 0;
+			checksum = buf[i];
+			buf[i] = 0;
 		}
-		sum = sum +value;
+		sum += buf[i];
 	 if (sum > max_int)
 	  {
-		  sum = sum-256+1;
+		  sum = sum-(max_int+1)+1;
 	  }
 
     }
-	complement = 255 - sum;
+	complement = max_int - sum;
 
   fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
   if (checksum != complement ) {
