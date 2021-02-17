@@ -49,7 +49,7 @@ int main (int argc, char * argv[], char ** envp) {
 		  tmp++;
 	  }
     }
-	compliment = 255 - sum;
+	complement = 255 - sum;
 
   fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
   if (checksum != complement ) {
